@@ -1,4 +1,4 @@
-const API = "http://localhost:5000";
+const API = "https://learnsphere-lms-ic8h.onrender.com";
 
 const state = {
   user: JSON.parse(localStorage.getItem("eduflow_user") || "null"),

@@ -11,7 +11,7 @@ async function loadQuiz() {
     try {
 
         const response = await fetch(
-            `http://localhost:5000/api/quiz/course/${courseId}`
+            `${API}/api/quiz/course/${courseId}`
         );
 
         quiz = await response.json();
