@@ -1,0 +1,58 @@
+# Query: EduFlow
+# ContextLines: 1
+
+18 results - 4 files
+
+app.js:
+    3  const state = {
+    4:   user: JSON.parse(localStorage.getItem("eduflow_user") || "null"),
+    5:   token: localStorage.getItem("eduflow_token") || "",
+    6    courses: [],
+
+   12  function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",2600)}
+   13: function saveAuth(data){state.user=data.user;state.token=data.token||"";localStorage.setItem("eduflow_user",JSON.stringify(state.user));localStorage.setItem("eduflow_token",state.token);renderNav()}
+   14: function logout(){localStorage.removeItem("eduflow_user");localStorage.removeItem("eduflow_token");state.user=null;state.token="";route("home")}
+   15  function authHeaders(json=false){const h={};if(state.token)h.Authorization=`Bearer ${state.token}`;if(json)h["Content-Type"]="application/json";return h}
+
+   49    </div></section>
+   50:   <section class="section"><div class="container"><div class="section-head"><div><h2>Why EduFlow?</h2><p class="muted">Everything you need for a simple learning journey.</p></div></div>
+   51    <div class="grid"><div class="card"><h3>Self-Paced Video Learning</h3><p class="muted">Stream structured YouTube lessons directly inside the course page.</p></div><div class="card"><h3>Interactive Quizzes</h3><p class="muted">Answer course questions and get instant score feedback.</p></div><div class="card"><h3>Verified Certificates</h3><p class="muted">Pass the course quiz and generate a printable certificate.</p></div></div></div></section>`);
+
+   64  function register(){
+   65:   layout(`<div class="auth-wrap"><div class="auth-card"><span class="category">Create EduFlow Account</span><h2>Join EduFlow</h2><p class="muted">Create your student account.</p>
+   66      <form onsubmit="doRegister(event)"><div class="form-group"><label>Full Name</label><input id="rname" required placeholder="e.g. Jane Smith"></div>
+
+  122    loadCourses().then(courses=>{
+  123: ⟪ 446 characters skipped ⟫ton></div></div></section><section class="section" style="padding-top:20px"><div class="container"><div class="section-head"><div><h2>Available Courses</h2><p class="muted">Continue learning from the EduFlow catalog.</p></div></div><div class="grid">${courses.map(courseCard).join("")}</div></div></section>`);
+  124    });
+
+  131    const date=new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"});
+  132:   layout(`<div class="certificate"><div class="cert-brand">EduFlow Learning Management System</div><h1>Certificate of Completion</h1><p class="muted">This certificate is officially awarded to</p><div class="cert-name">${esc(state.user.name).toUpperCase()}</div><p class="muted">for successfully completing the required learning modules and assessment for</p><div class="cert-course">${esc(c.title)}</div><div class="cert-grid"><div class="cert-sign"><b>${date}</b><br><span class="muted">Issue Date</span></div><div class="cert-sign"><b>SVEC Faculty</b><br><span class="muted">Instructor</span></div><div class="cert-sign"><b>${esc(String(state.user.id).slice(-8).toUpperCase())}</b><br><span class="muted">Student ID</span></div></div></div><div class="print-actions"><button class="btn" onclick="window.print()">Print / Save as PDF</button><button class="btn-light" onclick="route('dashboard')">Back to Dashboard</button></div>`);
+  133  }
+
+index.html:
+   5    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   6:   <title> LMS</title>
+   7    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  17        <span class="brand-mark">E</span>
+  18:       <span>EduFlow</span>
+  19      </a>
+
+  25    <footer>
+  26:     <div><strong>EduFlow LMS</strong><br><span>Learn. Practice. Achieve.</span></div>
+  27:     <div>© 2026 EduFlow Learning Management System</div>
+  28    </footer>
+
+quiz.html:
+   3  <head>
+   4:     <title>EduFlow - Quiz</title>
+   5      <link rel="stylesheet" href="style.css">
+
+   9  
+  10:     <h1>EduFlow LMS</h1>
+  11  
+
+README.md:
+  1: # EduFlow LMS Frontend
+  2  

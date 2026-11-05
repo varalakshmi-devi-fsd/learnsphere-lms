@@ -1,4 +1,4 @@
-const API = "https://learnsphere-lms-ic8h.onrender.com";
+const API_URL = "https://learnsphere-lms-1-mmsy.onrender.com";
 
 const state = {
   user: JSON.parse(localStorage.getItem("eduflow_user") || "null"),
